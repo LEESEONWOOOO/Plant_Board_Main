@@ -12,6 +12,11 @@ const App = () => {
       .catch(error => console.log(error));
   }, []);
 
+  const [textareaHeight, setTextareaHeight] = useState({
+    row: 1,
+    lineBreak: {},
+  });
+
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
@@ -40,21 +45,22 @@ const App = () => {
 
   return (
     <div>
-      <h1>게시판</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={inputValue} onChange={handleInputChange} />
-        <button type="submit">Send</button>
+      <form>
+      <div>
+        <h1>식구</h1>
+          <select>
+            <option>게시판 종류</option>
+          </select>
+      </div>
+      <div>
+        <h3>제목</h3> <input type='text'/>
+      </div>
+
+      <div>
+        <h3>내용</h3><textarea></textarea>
+      </div>
       </form>
-      <ul>
-        {items.map(item => (
-          <li key={item.id}>
-            {item.text}
-            <button onClick={() => handleDelete(item.id)}>X</button>
-          </li>
-        ))}
-      </ul>
     </div>
-  );
-};
+  )}
 
 export default App;
